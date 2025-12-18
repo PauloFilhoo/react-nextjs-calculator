@@ -1,2 +1,2 @@
-# react-nextjs-calculator
+# A simple calculator using React and NextJS
 
