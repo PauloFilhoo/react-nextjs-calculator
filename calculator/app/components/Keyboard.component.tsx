@@ -19,7 +19,7 @@ export function CalcKeyboard() {
     setState(initialState);
     console.log("Memory cleared!");
   }
-  
+
   function deleteLast() {
     console.log("Deleted last digit!");
   }
@@ -30,20 +30,30 @@ export function CalcKeyboard() {
 
   function addDigit(n: string) {
     if (n === "." && state.displayValue.includes(".")) {
-      return state; // Ignore if '.' is already present
+      return; // Ignore if '.' is already present
     }
 
     const clearDisplay = state.displayValue === "0" || state.clearDisplay;
     const currentValue = clearDisplay ? "" : state.displayValue;
     const displayValue = currentValue + n;
-    setState({
-      ...state,
-      displayValue,
-      clearDisplay: false,
-    });
 
-    console.log(`Added digit: ${state.displayValue}`);
+    setState((prevState) => {
+      {
+        const newState = { ...prevState, displayValue, clearDisplay: false };
+        if (n !== ".") {
+          const index = newState.current;
+          const newValue = parseFloat(displayValue)
+          const newValues = [...newState.values]
+          newValues[index] = newValue
+          newState.values = newValues
+          console.log(newValues);
+          console.log("Valor da variavel" + " " + newState.values);
+        }
+        return newState;
+      }
+    });
   }
+
 
   return (
     <>
