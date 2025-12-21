@@ -42,10 +42,10 @@ export function CalcKeyboard() {
         const newState = { ...prevState, displayValue, clearDisplay: false };
         if (n !== ".") {
           const index = newState.current;
-          const newValue = parseFloat(displayValue)
-          const newValues = [...newState.values]
-          newValues[index] = newValue
-          newState.values = newValues
+          const newValue = parseFloat(displayValue);
+          const newValues = [...newState.values];
+          newValues[index] = newValue;
+          newState.values = newValues;
           console.log(newValues);
           console.log("Valor da variavel" + " " + newState.values);
         }
