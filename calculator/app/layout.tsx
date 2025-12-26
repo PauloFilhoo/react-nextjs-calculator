@@ -21,6 +21,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Calculator App",
   description: "A simple calculator built with Next.js",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

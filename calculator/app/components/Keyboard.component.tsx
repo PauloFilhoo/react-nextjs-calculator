@@ -14,7 +14,7 @@ const initialState = {
   lastDigit: "",
 };
 
-export function CalcKeyboard() {
+export function Keyboard() {
   const [state, setState] = useState(initialState);
 
   function clearMemory() {
@@ -23,29 +23,35 @@ export function CalcKeyboard() {
   }
 
   function deleteLast() {
-    setState((prevState) => {
-      let { displayValue, values } = prevState;
+    // tem operação
+    // se esta no 1 ou 2 valor
+    if (state.operation === "" || state.operation && state.current === 1 && state.values[1] !== 0) {
+      setState((prevState) => {
+        let { displayValue, values } = prevState;
 
-      if (displayValue.length === 1) {
-        displayValue = "0";
-      } else {
-        displayValue = displayValue.slice(0, -1);
-        values[prevState.current] = parseFloat(displayValue) || 0;
-      }
+        if (displayValue.length === 1) {
+          displayValue = "0";
+          values[prevState.current] = 0;
+        } else {
+          displayValue = displayValue.slice(0, -1);
+          values[prevState.current] = parseFloat(displayValue) || 0;
+        }
 
-      return { ...prevState, displayValue };
-    });
+        return { ...prevState, displayValue };
+      });
+    }
+
   }
 
   function setOperation(op: string) {
-    if (op !== "=" && state.displayValue === "0") {
+    if (op !== "=" && state.values[0] === 0 || op === "=" && state.values[1] === 0) {
       return console.log("Ignoring operation on initial zero display");
     }
-
+    // Setting operation if the current value is on the first param, if the user pressed a digit and if theres no operation before. 
     if (state.current === 0 && state.lastDigit !== "" && state.operation === "") {
       setState({ ...state, operation: op, current: 1, clearDisplay: true });
-    } 
-    
+    }
+    // Setting operation if theres no operation before, it's not the equal op and it's on the first current value and if theres no lastDigit
     if (state.operation === "" && op !== "=" && state.current === 0 && state.lastDigit === "") {
       const first = parseFloat(state.displayValue) || 0;
       setState({
@@ -131,7 +137,7 @@ export function CalcKeyboard() {
       <ul className="calc-grid ">
         <Button label="AC" click={clearMemory} double />
         <Button label="X" click={deleteLast} />
-        <Button operation label="/" click={setOperation} />
+        <Button operation label="/" opsymbol="/icons/divide-icon.svg" click={setOperation} />
         <Button label="7" click={addDigit} />
         <Button label="8" click={addDigit} />
         <Button label="9" click={addDigit} />

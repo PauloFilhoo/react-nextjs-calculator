@@ -1,5 +1,5 @@
 import { Button } from "./Button.component";
-import { CalcKeyboard } from "./Keyboard.component";
+import { Keyboard } from "./Keyboard.component";
 import { Display } from "./Display.component";
 
 export default function Calculator()
@@ -13,7 +13,7 @@ export default function Calculator()
                     <li>X</li>
                 </ul>
             </nav>
-            <CalcKeyboard />
+            <Keyboard />
         </div>
     );
 }

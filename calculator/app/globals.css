@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --calcbackground: #ACADEA;
+  --buttonsbackground: #E8EBAE;
+  --hbuttonsbackground: #EBDFAE;
+  --opbackground: #AECFEB;
+  --hopbackground: #AECFEB;
 }
 
 @theme inline {
@@ -26,15 +31,15 @@
 
 @layer components {
   .ctn {
-    @apply bg-zinc-800 w-96 h-144 flex flex-col items-center justify-start rounded-lg ;
+    @apply bg-(--calcbackground) w-96 h-144 flex flex-col items-center justify-start rounded-lg ;
   }
 
   .btn {
-    @apply bg-zinc-600 w-full h-full rounded flex items-center justify-center hover:bg-zinc-700 text-2xl;
+    @apply bg-(--buttonsbackground) w-full h-full rounded flex items-center justify-center text-black hover:bg-(--hbuttonsbackground) duration-100 text-2xl active:scale-95;
   }
 
   .btn-operation {
-    @apply bg-purple-500 hover:bg-purple-600 text-white;
+    @apply bg-(--opbackground) hover:bg-(--hopbackground) text-black;
   }
 
   .btn-double {
@@ -50,13 +55,15 @@
   }
 
   .display {
-    @apply bg-black/25 w-full h-32 mb-4 flex items-center justify-end p-8 text-6xl overflow-hidden;
+    @apply bg-black/25 w-90 h-32 rounded-sm mb-4 flex items-center justify-end p-8 text-6xl overflow-hidden;
   }
 
   .calc-grid {
     @apply grid grid-cols-4 w-full h-full gap-2 justify-center items-center p-2;
   }
 }
+
+
 
 body {
   background: var(--background);
