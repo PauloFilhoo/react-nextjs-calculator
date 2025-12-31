@@ -23,8 +23,6 @@ export function Keyboard() {
   }
 
   function deleteLast() {
-    // tem operação
-    // se esta no 1 ou 2 valor
     if (state.operation === "" || state.operation && state.current === 1 && state.values[1] !== 0) {
       setState((prevState) => {
         let { displayValue, values } = prevState;
@@ -131,17 +129,28 @@ export function Keyboard() {
     });
   }
 
+  function compactMode() {
+    if (state.displayValue.length > 9) {
+      console.log("Compact!")
+      return <Display value={state.displayValue} operation={state.operation} compact />
+    } else {
+      console.log("not Compact!")
+      return <Display value={state.displayValue} operation={state.operation} />
+    }
+  }
+
   return (
     <>
-      <Display value={state.displayValue} operation={state.operation} />
+      {/* <Display value={state.displayValue} operation={state.operation} /> */}
+      {compactMode()}
       <ul className="calc-grid ">
         <Button label="AC" click={clearMemory} double />
-        <Button label="X" click={deleteLast} />
+        <Button label="X" click={deleteLast} opsymbol="/icons/delete-icon.svg" />
         <Button operation label="/" opsymbol="/icons/divide-icon.svg" click={setOperation} />
         <Button label="7" click={addDigit} />
         <Button label="8" click={addDigit} />
         <Button label="9" click={addDigit} />
-        <Button operation label="*" click={setOperation} />
+        <Button operation label="*" opsymbol="/icons/x-icon.svg" click={setOperation} />
         <Button label="4" click={addDigit} />
         <Button label="5" click={addDigit} />
         <Button label="6" click={addDigit} />

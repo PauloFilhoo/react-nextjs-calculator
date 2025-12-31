@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const roboto = Roboto({
-  variable: "--font-roboto-thin",
-  subsets: ["latin"],
-  weight: ["100"],
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +16,7 @@ export const metadata: Metadata = {
   title: "Calculator App",
   description: "A simple calculator built with Next.js",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/icons/calculator-icon.svg',
   },
 };
 

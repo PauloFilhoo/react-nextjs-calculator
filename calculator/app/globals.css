@@ -3,11 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --calcbackground: #ACADEA;
-  --buttonsbackground: #E8EBAE;
-  --hbuttonsbackground: #EBDFAE;
-  --opbackground: #AECFEB;
-  --hopbackground: #AECFEB;
+  --calcbackground: #1A1B1F;
+  --buttonsbackground: #3A3D49;
+  --hbuttonsbackground: #686E84;
+  --opbackground: #495A9E;
+  --hopbackground: #647BD8;
 }
 
 @theme inline {
@@ -24,18 +24,13 @@
   }
 }
 
-@font-face {
-  font-family: 'RobotoMono';
-  src: url(./fonts/Roboto-Thin.ttf);
-}
-
 @layer components {
   .ctn {
-    @apply bg-(--calcbackground) w-96 h-144 flex flex-col items-center justify-start rounded-lg ;
+    @apply bg-(--calcbackground) w-96 h-144 flex flex-col items-center justify-start rounded-lg border p-2 ;
   }
 
   .btn {
-    @apply bg-(--buttonsbackground) w-full h-full rounded flex items-center justify-center text-black hover:bg-(--hbuttonsbackground) duration-100 text-2xl active:scale-95;
+    @apply bg-(--buttonsbackground) w-full h-full rounded flex items-center justify-center text-black hover:bg-(--hbuttonsbackground) duration-100 text-3xl active:scale-95;
   }
 
   .btn-operation {
@@ -46,16 +41,16 @@
     @apply col-span-2;
   }
 
-  .btn-tiple {
-    @apply col-span-3;
-  }
-
   .tabs {
-    @apply flex flex-row gap-4 justify-between items-center w-full h-8 p-4 mb-4;
+    @apply flex gap-4 justify-center items-center w-full h-8 p-4 mb-2 mt-2 text-2xl;
   }
 
   .display {
     @apply bg-black/25 w-90 h-32 rounded-sm mb-4 flex items-center justify-end p-8 text-6xl overflow-hidden;
+  }
+  
+  .display-compact {
+    @apply bg-black/25 w-90 h-32 rounded-sm mb-4 flex items-center justify-end p-8 text-2xl overflow-hidden;
   }
 
   .calc-grid {
@@ -63,10 +58,8 @@
   }
 }
 
-
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, sans-serif;
+  font-family: var(--font-mono), sans-serif;
 }
