@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Calculator App",
-  description: "A simple calculator built with Next.js",
+  title: "Online Calculator | React & NextJS",
+  description: "A simple calculator built with React and Next.js",
   icons: {
     icon: '/icons/calculator-icon.svg',
   },
